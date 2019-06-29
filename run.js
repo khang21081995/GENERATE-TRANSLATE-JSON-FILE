@@ -71,9 +71,9 @@ let countFile = 0;
 
 getAllDirWithChild(getTranslateDir).map(v => getFileContentInDir(v).map(j => {
   if (needTranslate[j.fileName]) {
-    needTranslate[j.fileName].push(...fillterContentByRegex(j.content, regex).map(v => v.replace(regex, '$1')));
+    needTranslate[j.fileName].push(...fillterContentByRegex(j.content, regex).map(v => v.replace(regex, `$${config.regexGetDataIndex}`)));
   } else {
-    needTranslate[j.fileName] = fillterContentByRegex(j.content, regex).map(v => v.replace(regex, '$1'));
+    needTranslate[j.fileName] = fillterContentByRegex(j.content, regex).map(v => v.replace(regex, `$${config.regexGetDataIndex}`));
   }
 }));
 
@@ -116,6 +116,3 @@ function getOutput(lang) {
 config.languages.map(v => {
   getOutput(v);
 })
-
-
-// console.log(fillterContentByRegex(content, regex).map(v => v.replace(regex, '$1')))
