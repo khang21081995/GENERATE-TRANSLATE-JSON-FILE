@@ -1,0 +1,1 @@
+# sailsJS-Get-Translate-Content-I18n
