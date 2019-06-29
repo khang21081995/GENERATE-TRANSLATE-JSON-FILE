@@ -25,25 +25,29 @@ let getFileContentInDir = (dir) => {
 
 let getAllFileDir = (dir) => {
   let rootURL = dir
-  return fs.readdirSync(rootURL, {
+  let ret = fs.readdirSync(rootURL, {
       withFileTypes: true
     })
     .filter(item => item.isDirectory())
     .map(item => {
       return dir + '/' + item.name
     });
+  return ret;
 }
 
 let getAllDirWithChild = (listDir) => {
   let allDir = [];
-  allDir.push(...listDir);
+  allDir = allDir.concat(listDir);
+
   let getAllDirWithChild1 = (rootDir) => {
     let tmp = [];
+
     for (let i = 0; i < rootDir.length; i++) {
       const element = rootDir[i];
-      rootDir = getAllFileDir(element)
-      allDir.push(...rootDir);
-      tmp.push(...rootDir);
+      if (!element) continue;
+      let rootDir1 = getAllFileDir(element)
+      allDir = allDir.concat(rootDir1);
+      tmp = tmp.concat(rootDir1);
     }
     if (tmp.length) {
       return getAllDirWithChild1(tmp)

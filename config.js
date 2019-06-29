@@ -1,6 +1,6 @@
 module.exports = {
-  getTranslateDir: ['E:/cocobay/cocobaybookingbackend/src'],
-  regexGetData: /sails.__\('(.*?)'\)/gi,
+  getTranslateDir: ['E:/cocobay/book/src'],
+  regexGetData: /translate\(('|")(.*?)('|")\)/ ,///sails.__\('(.*?)'\)/gi,
   languages: ['vi', 'en'],
-  regexGetDataIndex: 1 //vị trí lấy dữ liệu trong regex ở đây là lấy phần (.*?)
+  regexGetDataIndex: 2 //vị trí lấy dữ liệu trong regex ở đây là lấy phần (.*?)
 }
