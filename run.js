@@ -87,6 +87,7 @@ for (const iterator in needTranslate) {
   count += temp.length;
   if (temp.length) {
     countFile += 1;
+    console.log({fileName:iterator})
   }
   temp.map(v => jsonTrans[v] = v);
 }
